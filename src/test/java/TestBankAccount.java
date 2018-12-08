@@ -1,16 +1,19 @@
-package ca.uwo.csd.cs2212.USERNAME;
+package org.kt3k.bankaccount;
 
-import junit.framework.Assert;
-import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
-public class TestBankAccount {
+public class TransferContextTest {
 
-	@Test
-	public void testDebitWithSufficientFunds(){
-			BankAccount account = new BankAccount(10);
-			double amount = account.debit(5);
-			Assert.assertEquals(5.0, amount);
-	}
-	
+    @Test
+    public void testTransfer() {
+        BankAccount a = new BankAccount("abc123", 15000);
+        BankAccount b = new BankAccount("def456", 25000);
+
+        new TransferContext(a, b).transfer(5000);
+
+        assertEquals((Integer)10000, a.getBalance());
+        assertEquals((Integer)30000, b.getBalance());
+    }
+
 }

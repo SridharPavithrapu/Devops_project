@@ -1,20 +1,30 @@
-package ca.uwo.csd.cs2212.USERNAME;
+package org.kt3k.bankaccount;
 
 public class BankAccount {
 
-  private double balance;
+    private String id;
+    private Integer balance;
 
-  public BankAccount(double balance) {
-    this.balance = balance;
-  }
-
-  public double debit(double amount) {
-    if (balance < amount) {
-      amount = balance;
+    public BankAccount(String id, Integer balance) {
+        this.id = id;
+        this.balance = balance;
     }
 
-    balance -= amount;
-    return amount;
-  }
+
+    public void increase(Integer money) {
+        this.balance += money;
+    }
+
+    public void decrease(Integer money) {
+        this.balance -= money;
+    }
+
+    public Integer getBalance() {
+        return this.balance;
+    }
+
+    public String getId() {
+        return this.id;
+    }
 
 }
